@@ -7,6 +7,7 @@ class World:
         }
 
     def explore(self, player):
+        print("------------------------")
         print("Where do you want to go?")
         for location in self.locations.keys():
             print(f"- {location}")
@@ -14,5 +15,6 @@ class World:
         choice = input("Enter the location name: ").lower()
         if choice in self.locations:
             print(self.locations[choice])
+            return choice
         else:
             print("Invalid location. Please choose a valid location.")

@@ -1,12 +1,23 @@
 from player import Player
 from world import World
+from quest import ForestQuest
+
 
 def main():
     print("Welcome to the world of Adventure Game!")
-    name = input("What is your name? ")
-    profession = input("What is your profession? ")
+    name = str(input("What is your name? "))
+    while any(char.isdigit() for char in name):
+        print("there cannot be a number in the name!")
+        name = str(input("What is your name? "))
+
+    profession = str(input("What is your profession? "))
+    while any(char.isdigit() for char in profession):
+        print("there cannot be a number in the profession!")
+        profession = str(input("What is your profession? "))
+
     player = Player(name, profession)
     world = World()
+    forest_quest = ForestQuest()
 
     while True:
         try:
@@ -14,9 +25,9 @@ def main():
             print("What do you want to do? ")
             choice = input("Travel, Info, Inventory, Wallet, Quit : ")
             if choice == "Travel":
-                location = world.explore(player)
+                location = world.explore()
                 if location == "forest":
-                    player.experience += 3
+                    forest_quest.dialog(player)
                 elif location == "castle":
                     player.experience += 1
                 elif location == "village":

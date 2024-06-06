@@ -6,7 +6,7 @@ class World:
             "village": "You arrive in a small, lively village with friendly locals."
         }
 
-    def explore(self, player):
+    def explore(self):
         print("------------------------")
         print("Where do you want to go?")
         for location in self.locations.keys():

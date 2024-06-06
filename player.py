@@ -21,3 +21,7 @@ class Player:
             print(f"- {self.money}")
         else:
             print("No Money")
+
+    def add_to_inventory(self, item):
+        self.inventory.append(item)
+        print(f"{item} a été ajouté à votre inventaire.")

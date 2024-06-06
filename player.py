@@ -18,10 +18,15 @@ class Player:
     def show_money(self):
         print("my Wallet:")
         if self.money:
-            print(f"- {self.money}")
+            print(f"{self.money} £")
         else:
             print("No Money")
 
+
     def add_to_inventory(self, item):
         self.inventory.append(item)
-        print(f"{item} a été ajouté à votre inventaire.")
+        print(f"{item} has been added to Inventory.")
+
+    def remove_from_inventory(self, item):
+        self.inventory.remove(item)
+        print(f"{item} has been removed from Inventory.")

@@ -24,8 +24,9 @@ class ForestQuest(Quest):
                     print("It's a gold medal, maybe it's valuable.")
                     interaction_2 = input("Would you like to take it ? (Y/N) ")
                     if interaction_2.lower() == 'y':
-                        player.add_to_inventory("Gold Medal")
-                        print("You carefully take the gold medal and put it in your inventory.")
+                        if "Gold Medal" not in player.inventory:
+                            player.add_to_inventory("Gold Medal")
+                            print("You carefully take the gold medal and put it in your inventory.")
                         interaction_3 = input(
                             "Suddenly, you hear a rustling in the bushes. Would you like to investigate? (Y/N) ")
                         if interaction_3.lower() == 'y':
@@ -37,6 +38,11 @@ class ForestQuest(Quest):
                                     "at you gratefully and runs away.")
                                 print("You feel a sense of accomplishment and gain 5 experience points.")
                                 player.experience += 5
+                                sell = input("Would you like to sell the gold medal for 50£ (Y/N)")
+                                if sell.lower() == 'y':
+                                    player.remove_from_inventory("Gold Medal")
+                                    print("You earn 50£")
+                                    player.money += 50
                                 break
                             else:
                                 print(
